@@ -82,7 +82,13 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ id, onVisible }) => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="project-card group"
+              className="project-card group relative"
+              whileHover={{ 
+                scale: 1.02,
+                rotateY: 5,
+                rotateX: 5,
+              }}
+              style={{ transformStyle: 'preserve-3d' }}
             >
               <div className="relative h-64 overflow-hidden">
                 <img 

@@ -11,6 +11,8 @@ import Resume from './components/sections/Resume';
 import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
 import { PortfolioScene } from './components/3d/PortfolioScene';
+import ParticleBackground from './components/ui/ParticleBackground';
+import ScrollProgress from './components/ui/ScrollProgress';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -35,6 +37,8 @@ function App() {
 
   return (
     <div className="relative min-h-screen">
+      <ScrollProgress />
+      <ParticleBackground />
       <div className="canvas-container">
         <Suspense fallback={null}>
           <PortfolioScene activeSection={activeSection} />

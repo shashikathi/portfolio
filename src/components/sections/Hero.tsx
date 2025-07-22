@@ -40,7 +40,7 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange }) => {
           </div>
           
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white-bright">
-            K Shashi Preetham
+            <span className="hero-text">K Shashi Preetham</span>
           </h1>
           
           <motion.div
@@ -48,7 +48,7 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange }) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            <h2 className="text-2xl md:text-3xl text-white-glass mb-8 font-medium">
+            <h2 className="text-2xl md:text-3xl text-white-glass mb-8 font-medium animate-float">
               Data Science & Business Analytics Professional
             </h2>
             
@@ -59,44 +59,61 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange }) => {
             
             <div className="mb-8 space-y-4">
               <div className="flex flex-wrap justify-center gap-4">
-                <div className="flex items-center glass-panel px-6 py-3 rounded-full">
+                <motion.div 
+                  className="flex items-center glass-panel px-6 py-3 rounded-full animate-glow"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   <span className="text-yellow-400 mr-3 text-xl">🏆</span>
                   <span className="text-white font-medium">Gold Medalist in Karate - State Level</span>
-                </div>
-                <div className="flex items-center glass-panel px-6 py-3 rounded-full">
+                </motion.div>
+                <motion.div 
+                  className="flex items-center glass-panel px-6 py-3 rounded-full"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   <span className="text-blue-400 mr-3 text-xl">👨‍💼</span>
                   <span className="text-white font-medium">Senior Coordinator at Oasis</span>
-                </div>
-                <div className="flex items-center glass-panel px-6 py-3 rounded-full">
+                </motion.div>
+                <motion.div 
+                  className="flex items-center glass-panel px-6 py-3 rounded-full"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   <span className="text-green-400 mr-3 text-xl">💻</span>
                   <span className="text-white font-medium">9+ ML/DL Projects on GitHub</span>
-                </div>
+                </motion.div>
               </div>
             
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
-                <button 
+                <motion.button 
                   onClick={handleExploreClick}
                   className="btn btn-primary"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   Explore Portfolio
-                </button>
-                <a 
+                </motion.button>
+                <motion.a 
                   href="#contact" 
                   className="btn btn-outline"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   Get in Touch
-                </a>
+                </motion.a>
               </div>
 
-              <a 
+              <motion.a 
                 href="https://www.instagram.com/____shashikathi____" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-white-glass hover:text-white transition-colors text-lg"
+                whileHover={{ scale: 1.05 }}
               >
                 <Instagram className="w-6 h-6 mr-3" />
                 <span>Follow me on Instagram</span>
-              </a>
+              </motion.a>
             </div>
           </motion.div>
         </motion.div>
