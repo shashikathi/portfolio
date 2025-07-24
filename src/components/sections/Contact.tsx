@@ -53,7 +53,7 @@ const Contact: React.FC<ContactProps> = ({ id, onVisible }) => {
         >
           <h2 className="section-heading">Get In Touch</h2>
           <p className="text-neutral-600 max-w-2xl mx-auto">
-            Interested in working together? Feel free to reach out for collaborations or just a friendly hello.
+            Open to opportunities in Data Analytics, Business Analysis, and AI/ML Engineering roles across India.
           </p>
         </motion.div>
 
@@ -94,7 +94,17 @@ const Contact: React.FC<ContactProps> = ({ id, onVisible }) => {
                     <div>
                       <h4 className="text-sm font-medium text-neutral-800 mb-1">Location</h4>
                       <p className="text-neutral-600">
-                        Bangalore, India
+                        India (Open to Remote/Hybrid/Onsite)
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="w-5 h-5 text-primary-600 mt-1 mr-3">💼</div>
+                    <div>
+                      <h4 className="text-sm font-medium text-neutral-800 mb-1">Seeking Roles</h4>
+                      <p className="text-neutral-600 text-sm">
+                        Data Analytics • Business Analysis • AI/ML Engineering
                       </p>
                     </div>
                   </div>

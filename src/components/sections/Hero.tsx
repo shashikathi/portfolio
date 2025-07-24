@@ -49,15 +49,31 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange }) => {
             transition={{ delay: 0.4, duration: 0.8 }}
           >
             <h2 className="text-2xl md:text-3xl text-white-glass mb-8 font-medium animate-float">
-              Data Science & Business Analytics Professional
+              Data Analytics • Business Analysis • AI/ML Engineering
             </h2>
             
             <p className="text-xl text-white-glass mb-10 max-w-3xl mx-auto leading-relaxed">
-              Transforming data into actionable insights through machine learning models, 
-              powerful visualizations, and strategic analysis.
+              Transforming complex data into strategic business insights through advanced analytics, 
+              machine learning models, and data-driven decision making. Open to opportunities across India.
             </p>
             
             <div className="mb-8 space-y-4">
+              <div className="flex justify-center mb-6">
+                <div className="glass-panel px-8 py-4 rounded-full">
+                  <div className="flex items-center space-x-6 text-white">
+                    <div className="flex items-center">
+                      <div className="w-3 h-3 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                      <span className="font-medium">Available for Opportunities</span>
+                    </div>
+                    <div className="text-white/70">|</div>
+                    <div className="flex items-center">
+                      <span className="text-blue-300 mr-2">📍</span>
+                      <span>India (Remote/Hybrid/Onsite)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
               <div className="flex flex-wrap justify-center gap-4">
                 <motion.div 
                   className="flex items-center glass-panel px-6 py-3 rounded-full animate-glow"

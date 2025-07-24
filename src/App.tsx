@@ -10,6 +10,7 @@ import EducationTower from './components/sections/EducationTower';
 import Resume from './components/sections/Resume';
 import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
+import CallToAction from './components/ui/CallToAction';
 import { PortfolioScene } from './components/3d/PortfolioScene';
 import ParticleBackground from './components/ui/ParticleBackground';
 import ScrollProgress from './components/ui/ScrollProgress';
@@ -56,6 +57,7 @@ function App() {
           <CertificationsWall id="certifications" onVisible={() => handleSectionChange('certifications')} />
           <EducationTower id="education" onVisible={() => handleSectionChange('education')} />
           <Resume id="resume" onVisible={() => handleSectionChange('resume')} />
+          <CallToAction />
           <Contact id="contact" onVisible={() => handleSectionChange('contact')} />
         </main>
         

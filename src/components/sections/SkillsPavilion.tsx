@@ -19,56 +19,57 @@ const SkillsPavilion: React.FC<SkillsPavilionProps> = ({ id, onVisible }) => {
 
   const skillCategories = [
     {
-      name: "Languages",
+      name: "Programming & Query Languages",
       icon: <Code size={28} className="text-blue-300" />,
       skills: [
         { name: "Python", level: 90 },
         { name: "SQL", level: 85 },
+        { name: "R", level: 75 },
         { name: "Django", level: 80 }
       ]
     },
     {
-      name: "Technologies & Frameworks",
+      name: "ML/AI Frameworks",
       icon: <BrainCircuit size={28} className="text-purple-300" />,
       skills: [
         { name: "PyTorch", level: 85 },
-        { name: "CrewAI", level: 80 },
-        { name: "Google Gen AI", level: 85 },
+        { name: "TensorFlow", level: 80 },
+        { name: "Scikit-learn", level: 90 },
         { name: "Transformers", level: 80 },
-        { name: "Scikit-learn", level: 90 }
+        { name: "OpenAI API", level: 85 }
       ]
     },
     {
-      name: "Tools & Platforms",
+      name: "Analytics & BI Tools",
       icon: <Database size={28} className="text-green-300" />,
       skills: [
-        { name: "MySQL", level: 85 },
-        { name: "OpenAI", level: 85 },
-        { name: "LangChain", level: 80 },
         { name: "Power BI", level: 90 },
-        { name: "Airflow", level: 80 },
-        { name: "Tableau", level: 85 }
+        { name: "Tableau", level: 85 },
+        { name: "Excel (Advanced)", level: 95 },
+        { name: "MySQL", level: 85 },
+        { name: "Apache Airflow", level: 75 }
       ]
     },
     {
-      name: "Data Analysis",
+      name: "Data Science & Statistics",
       icon: <LineChart size={28} className="text-yellow-300" />,
       skills: [
-        { name: "MS Excel", level: 90 },
-        { name: "Data Visualization", level: 85 },
-        { name: "Statistical Analysis", level: 85 },
-        { name: "Kaggle", level: 80 }
+        { name: "Statistical Modeling", level: 85 },
+        { name: "A/B Testing", level: 80 },
+        { name: "Data Visualization", level: 90 },
+        { name: "Predictive Analytics", level: 85 },
+        { name: "Time Series Analysis", level: 80 }
       ]
     },
     {
-      name: "Soft Skills",
+      name: "Business & Communication",
       icon: <Lightbulb size={28} className="text-pink-300" />,
       skills: [
-        { name: "Cross-Cultural Competence", level: 90 },
         { name: "Data Storytelling", level: 85 },
-        { name: "Design Thinking", level: 85 },
-        { name: "Learning Agility", level: 90 },
-        { name: "Leadership", level: 85 }
+        { name: "Business Intelligence", level: 85 },
+        { name: "Stakeholder Management", level: 80 },
+        { name: "Project Management", level: 85 },
+        { name: "Cross-functional Collaboration", level: 90 }
       ]
     }
   ];
@@ -84,7 +85,7 @@ const SkillsPavilion: React.FC<SkillsPavilionProps> = ({ id, onVisible }) => {
         >
           <h2 className="section-heading">Skills Pavilion</h2>
           <p className="text-white-glass text-xl max-w-3xl mx-auto leading-relaxed">
-            A comprehensive overview of my technical and analytical capabilities in data science and business analytics.
+            Technical expertise and analytical capabilities aligned with industry requirements for data-driven roles.
           </p>
         </motion.div>
 

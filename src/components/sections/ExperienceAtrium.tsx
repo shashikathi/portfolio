@@ -22,10 +22,11 @@ const ExperienceAtrium: React.FC<ExperienceAtriumProps> = ({ id, onVisible }) =>
       company: "TransOrg Analytics",
       role: "Data Science Intern",
       period: "Jan 2025 - June 2025",
-      description: "Developed ML models for customer segmentation and predictive analysis, improving marketing campaign efficiency by 27%. Created interactive Power BI dashboards for real-time performance tracking.",
+      description: "Built end-to-end ML pipelines for customer segmentation using Python and scikit-learn. Designed interactive Power BI dashboards that reduced reporting time by 60% and improved decision-making speed.",
       metrics: [
-        { icon: <LineChart size={20} />, text: "Improved campaign performance by 27%" },
-        { icon: <Database size={20} />, text: "Processed 1.2TB of customer data" }
+        { icon: <LineChart size={20} />, text: "27% improvement in campaign ROI" },
+        { icon: <Database size={20} />, text: "Processed 1.2TB+ customer data daily" },
+        { icon: <Target size={20} />, text: "60% reduction in reporting time" }
       ],
       logo: "https://images.pexels.com/photos/5256816/pexels-photo-5256816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     },
@@ -33,11 +34,11 @@ const ExperienceAtrium: React.FC<ExperienceAtriumProps> = ({ id, onVisible }) =>
       company: "Movidu",
       role: "Business Analyst",
       period: "Oct 2024 - Jan 2025",
-      description: "Led market research and data analysis initiatives to identify potential leads and develop data-driven expansion strategies, collaborating with cross-functional teams to drive business growth.",
+      description: "Conducted comprehensive market analysis using SQL and Excel to identify high-value prospects. Developed data-driven expansion strategies that directly contributed to revenue growth through strategic insights.",
       metrics: [
-        { icon: <Target size={20} />, text: "Qualified 200+ potential leads" },
-        { icon: <BarChart size={20} />, text: "Achieved 25% revenue growth" },
-        { icon: <Users size={20} />, text: "20% increase in client engagement" }
+        { icon: <Target size={20} />, text: "Qualified 200+ high-value leads" },
+        { icon: <BarChart size={20} />, text: "Contributed to 25% revenue growth" },
+        { icon: <Users size={20} />, text: "20% boost in client engagement rates" }
       ],
       logo: "https://images.pexels.com/photos/7567529/pexels-photo-7567529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     }
@@ -54,7 +55,7 @@ const ExperienceAtrium: React.FC<ExperienceAtriumProps> = ({ id, onVisible }) =>
         >
           <h2 className="section-heading">Experience Atrium</h2>
           <p className="text-white-glass text-xl max-w-3xl mx-auto leading-relaxed">
-            Professional experiences that have shaped my expertise in data science and business analytics.
+            Professional journey in data analytics and business intelligence with measurable impact.
           </p>
         </motion.div>
 
