@@ -44,12 +44,12 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onSectionChange }) => {
 
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'
+      scrolled ? 'bg-black/80 backdrop-blur-md shadow-lg border-b border-white/10' : 'bg-transparent'
     }`}>
       <div className="container-custom py-4 flex items-center justify-between">
         <div className="flex items-center">
-          <BrainCircuit size={28} className="text-primary-600 mr-2" />
-          <span className="text-xl font-semibold text-neutral-900">K Shashi Preetham</span>
+          <BrainCircuit size={28} className="text-blue-400 mr-2" />
+          <span className="text-xl font-semibold text-white">K Shashi Preetham</span>
         </div>
         
         <nav className="hidden md:block">
@@ -58,8 +58,8 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onSectionChange }) => {
               <li key={item.id}>
                 <button
                   onClick={() => handleSectionClick(item.id)}
-                  className={`text-sm font-medium transition-colors hover:text-primary-600 ${
-                    activeSection === item.id ? 'text-primary-600' : 'text-neutral-700'
+                  className={`text-sm font-medium transition-colors hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-black rounded px-2 py-1 ${
+                    activeSection === item.id ? 'text-blue-400' : 'text-white/80'
                   }`}
                 >
                   {item.label}
@@ -70,9 +70,10 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onSectionChange }) => {
         </nav>
         
         <button 
-          className="md:hidden text-neutral-700 hover:text-neutral-900"
+          className="md:hidden text-white hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded p-1"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={isMenuOpen}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -80,15 +81,15 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onSectionChange }) => {
       
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white">
+        <div className="md:hidden bg-black/95 backdrop-blur-md border-t border-white/10">
           <nav className="container-custom py-4">
             <ul className="space-y-4">
               {navItems.map((item) => (
                 <li key={item.id}>
                   <button
                     onClick={() => handleSectionClick(item.id)}
-                    className={`text-base font-medium transition-colors hover:text-primary-600 ${
-                      activeSection === item.id ? 'text-primary-600' : 'text-neutral-700'
+                    className={`text-base font-medium transition-colors hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded px-2 py-1 w-full text-left ${
+                      activeSection === item.id ? 'text-blue-400' : 'text-white/80'
                     }`}
                   >
                     {item.label}

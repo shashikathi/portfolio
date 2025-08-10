@@ -382,4 +382,25 @@ body {
   .section-heading {
     font-size: 2rem;
   }
+  
+  /* Improve touch targets */
+  .btn {
+    min-height: 44px;
+    padding: 12px 24px;
+  }
+  
+  /* Better mobile text */
+  .text-white-glass {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  /* Reduce motion for better performance */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }

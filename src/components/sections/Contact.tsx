@@ -16,6 +16,9 @@ const Contact: React.FC<ContactProps> = ({ id, onVisible }) => {
     subject: '',
     message: ''
   });
+  const [errors, setErrors] = useState<{[key: string]: string}>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   
   useEffect(() => {
     if (isInView) {
@@ -24,22 +27,59 @@ const Contact: React.FC<ContactProps> = ({ id, onVisible }) => {
   }, [isInView, onVisible]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
     setFormState({
       ...formState,
-      [e.target.name]: e.target.value
+      [name]: value
     });
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: ''
+      });
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const validateForm = () => {
+    const newErrors: {[key: string]: string} = {};
+    
+    if (!formState.name.trim()) newErrors.name = 'Name is required';
+    if (!formState.email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formState.email)) newErrors.email = 'Email is invalid';
+    if (!formState.subject.trim()) newErrors.subject = 'Subject is required';
+    if (!formState.message.trim()) newErrors.message = 'Message is required';
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic would go here
-    alert('Message sent! (Demo functionality)');
-    setFormState({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
+    
+    if (!validateForm()) return;
+    
+    setIsSubmitting(true);
+    
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      setSubmitStatus('success');
+      setFormState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -139,6 +179,17 @@ const Contact: React.FC<ContactProps> = ({ id, onVisible }) => {
               <div className="p-6">
                 <h3 className="text-xl font-medium mb-6">Send a Message</h3>
                 
+                {submitStatus === 'success' && (
+                  <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+                    ✅ Message sent successfully! I'll get back to you soon.
+                  </div>
+                )}
+                
+                {submitStatus === 'error' && (
+                  <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+                    ❌ Failed to send message. Please try again or contact me directly.
+                  </div>
+                )}
                 <form onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                     <div>
@@ -151,9 +202,15 @@ const Contact: React.FC<ContactProps> = ({ id, onVisible }) => {
                         name="name"
                         value={formState.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors ${
+                          errors.name ? 'border-red-400 bg-red-50' : 'border-neutral-300'
+                        }`}
                         required
+                        aria-describedby={errors.name ? 'name-error' : undefined}
                       />
+                      {errors.name && (
+                        <p id="name-error" className="mt-1 text-sm text-red-600">{errors.name}</p>
+                      )}
                     </div>
                     
                     <div>
@@ -166,9 +223,15 @@ const Contact: React.FC<ContactProps> = ({ id, onVisible }) => {
                         name="email"
                         value={formState.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors ${
+                          errors.email ? 'border-red-400 bg-red-50' : 'border-neutral-300'
+                        }`}
                         required
+                        aria-describedby={errors.email ? 'email-error' : undefined}
                       />
+                      {errors.email && (
+                        <p id="email-error" className="mt-1 text-sm text-red-600">{errors.email}</p>
+                      )}
                     </div>
                   </div>
                   
@@ -182,9 +245,15 @@ const Contact: React.FC<ContactProps> = ({ id, onVisible }) => {
                       name="subject"
                       value={formState.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors ${
+                        errors.subject ? 'border-red-400 bg-red-50' : 'border-neutral-300'
+                      }`}
                       required
+                      aria-describedby={errors.subject ? 'subject-error' : undefined}
                     />
+                    {errors.subject && (
+                      <p id="subject-error" className="mt-1 text-sm text-red-600">{errors.subject}</p>
+                    )}
                   </div>
                   
                   <div className="mb-6">
@@ -197,17 +266,35 @@ const Contact: React.FC<ContactProps> = ({ id, onVisible }) => {
                       rows={5}
                       value={formState.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors resize-none"
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors resize-none ${
+                        errors.message ? 'border-red-400 bg-red-50' : 'border-neutral-300'
+                      }`}
                       required
+                      aria-describedby={errors.message ? 'message-error' : undefined}
                     />
+                    {errors.message && (
+                      <p id="message-error" className="mt-1 text-sm text-red-600">{errors.message}</p>
+                    )}
                   </div>
                   
                   <button
                     type="submit"
-                    className="btn btn-primary px-6 py-3"
+                    disabled={isSubmitting}
+                    className={`btn btn-primary px-6 py-3 ${
+                      isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
                   >
-                    <Send className="w-4 h-4 mr-2" />
-                    Send Message
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4 mr-2" />
+                        Send Message
+                      </>
+                    )}
                   </button>
                 </form>
               </div>

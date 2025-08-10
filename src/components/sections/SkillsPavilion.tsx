@@ -10,6 +10,7 @@ interface SkillsPavilionProps {
 const SkillsPavilion: React.FC<SkillsPavilionProps> = ({ id, onVisible }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const [selectedCategory, setSelectedCategory] = useState(0);
   
   useEffect(() => {
     if (isInView) {
@@ -21,6 +22,7 @@ const SkillsPavilion: React.FC<SkillsPavilionProps> = ({ id, onVisible }) => {
     {
       name: "Programming & Query Languages",
       icon: <Code size={28} className="text-blue-300" />,
+      color: "blue",
       skills: [
         { name: "Python", level: 90 },
         { name: "SQL", level: 85 },
@@ -31,6 +33,7 @@ const SkillsPavilion: React.FC<SkillsPavilionProps> = ({ id, onVisible }) => {
     {
       name: "ML/AI Frameworks",
       icon: <BrainCircuit size={28} className="text-purple-300" />,
+      color: "purple",
       skills: [
         { name: "PyTorch", level: 85 },
         { name: "TensorFlow", level: 80 },
@@ -42,6 +45,7 @@ const SkillsPavilion: React.FC<SkillsPavilionProps> = ({ id, onVisible }) => {
     {
       name: "Analytics & BI Tools",
       icon: <Database size={28} className="text-green-300" />,
+      color: "green",
       skills: [
         { name: "Power BI", level: 90 },
         { name: "Tableau", level: 85 },
@@ -53,6 +57,7 @@ const SkillsPavilion: React.FC<SkillsPavilionProps> = ({ id, onVisible }) => {
     {
       name: "Data Science & Statistics",
       icon: <LineChart size={28} className="text-yellow-300" />,
+      color: "yellow",
       skills: [
         { name: "Statistical Modeling", level: 85 },
         { name: "A/B Testing", level: 80 },
@@ -64,6 +69,7 @@ const SkillsPavilion: React.FC<SkillsPavilionProps> = ({ id, onVisible }) => {
     {
       name: "Business & Communication",
       icon: <Lightbulb size={28} className="text-pink-300" />,
+      color: "pink",
       skills: [
         { name: "Data Storytelling", level: 85 },
         { name: "Business Intelligence", level: 85 },
@@ -89,7 +95,62 @@ const SkillsPavilion: React.FC<SkillsPavilionProps> = ({ id, onVisible }) => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Mobile/Tablet: Tabbed Interface */}
+        <div className="lg:hidden mb-8">
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {skillCategories.map((category, index) => (
+              <button
+                key={index}
+                onClick={() => setSelectedCategory(index)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  selectedCategory === index
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-white/10 text-white/70 hover:bg-white/20'
+                }`}
+              >
+                {category.name.split(' ')[0]}
+              </button>
+            ))}
+          </div>
+          
+          <motion.div
+            key={selectedCategory}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3 }}
+            className="glass-panel p-8"
+          >
+            <div className="flex items-center mb-8">
+              <div className="mr-4 p-3 glass-panel rounded-full">
+                {skillCategories[selectedCategory].icon}
+              </div>
+              <h3 className="text-2xl font-bold text-white-bright">
+                {skillCategories[selectedCategory].name}
+              </h3>
+            </div>
+            
+            <div className="space-y-6">
+              {skillCategories[selectedCategory].skills.map((skill, idx) => (
+                <div key={idx}>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-white-glass font-medium">{skill.name}</span>
+                    <span className="text-white/70 text-sm font-bold">{skill.level}%</span>
+                  </div>
+                  <div className="skill-bar">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
+                      transition={{ duration: 1.5, delay: 0.3 + idx * 0.1 }}
+                      className="skill-progress"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+        {/* Desktop: Grid Layout */}
+        <div className="hidden lg:grid lg:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => (
             <motion.div
               key={index}

@@ -11,6 +11,7 @@ import Resume from './components/sections/Resume';
 import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
 import CallToAction from './components/ui/CallToAction';
+import BackToTop from './components/ui/BackToTop';
 import { PortfolioScene } from './components/3d/PortfolioScene';
 import ParticleBackground from './components/ui/ParticleBackground';
 import ScrollProgress from './components/ui/ScrollProgress';
@@ -62,6 +63,7 @@ function App() {
         </main>
         
         <Footer />
+        <BackToTop />
       </div>
     </div>
   );
