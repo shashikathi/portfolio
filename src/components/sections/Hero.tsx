@@ -60,12 +60,12 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange }) => {
             <div className="mb-8 space-y-4">
               <div className="flex justify-center mb-6">
                 <div className="glass-panel px-8 py-4 rounded-full">
-                  <div className="flex items-center space-x-6 text-white">
+                  <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 text-white">
                     <div className="flex items-center">
                       <div className="w-3 h-3 bg-green-400 rounded-full mr-2 animate-pulse"></div>
                       <span className="font-medium">Available for Opportunities</span>
                     </div>
-                    <div className="text-white/70">|</div>
+                    <div className="text-white/70 hidden sm:block">|</div>
                     <div className="flex items-center">
                       <span className="text-blue-300 mr-2">📍</span>
                       <span>India (Remote/Hybrid/Onsite)</span>

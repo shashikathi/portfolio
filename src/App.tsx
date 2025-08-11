@@ -1,6 +1,10 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import Navbar from './components/layout/Navbar';
 import Loader from './components/ui/Loader';
+import LoadingOptimizer from './components/ui/LoadingOptimizer';
+import ErrorBoundary from './components/ui/ErrorBoundary';
+import PerformanceMonitor from './components/ui/PerformanceMonitor';
+import AccessibilityHelper from './components/ui/AccessibilityHelper';
 import Hero from './components/sections/Hero';
 import ExperienceAtrium from './components/sections/ExperienceAtrium';
 import ProjectGallery from './components/sections/ProjectGallery';
@@ -38,34 +42,40 @@ function App() {
   }
 
   return (
-    <div className="relative min-h-screen">
-      <ScrollProgress />
-      <ParticleBackground />
-      <div className="canvas-container">
-        <Suspense fallback={null}>
-          <PortfolioScene activeSection={activeSection} />
-        </Suspense>
-      </div>
-      
-      <div className="content-container">
-        <Navbar activeSection={activeSection} onSectionChange={handleSectionChange} />
-        
-        <main>
-          <Hero onSectionChange={handleSectionChange} />
-          <ExperienceAtrium id="experience" onVisible={() => handleSectionChange('experience')} />
-          <ProjectGallery id="projects" onVisible={() => handleSectionChange('projects')} />
-          <SkillsPavilion id="skills" onVisible={() => handleSectionChange('skills')} />
-          <CertificationsWall id="certifications" onVisible={() => handleSectionChange('certifications')} />
-          <EducationTower id="education" onVisible={() => handleSectionChange('education')} />
-          <Resume id="resume" onVisible={() => handleSectionChange('resume')} />
-          <CallToAction />
-          <Contact id="contact" onVisible={() => handleSectionChange('contact')} />
-        </main>
-        
-        <Footer />
-        <BackToTop />
-      </div>
-    </div>
+    <ErrorBoundary>
+      <LoadingOptimizer>
+        <div className="relative min-h-screen">
+          <PerformanceMonitor />
+          <ScrollProgress />
+          <ParticleBackground />
+          <div className="canvas-container">
+            <Suspense fallback={null}>
+              <PortfolioScene activeSection={activeSection} />
+            </Suspense>
+          </div>
+          
+          <div className="content-container">
+            <Navbar activeSection={activeSection} onSectionChange={handleSectionChange} />
+            
+            <main>
+              <Hero onSectionChange={handleSectionChange} />
+              <ExperienceAtrium id="experience" onVisible={() => handleSectionChange('experience')} />
+              <ProjectGallery id="projects" onVisible={() => handleSectionChange('projects')} />
+              <SkillsPavilion id="skills" onVisible={() => handleSectionChange('skills')} />
+              <CertificationsWall id="certifications" onVisible={() => handleSectionChange('certifications')} />
+              <EducationTower id="education" onVisible={() => handleSectionChange('education')} />
+              <Resume id="resume" onVisible={() => handleSectionChange('resume')} />
+              <CallToAction />
+              <Contact id="contact" onVisible={() => handleSectionChange('contact')} />
+            </main>
+            
+            <Footer />
+            <BackToTop />
+            <AccessibilityHelper />
+          </div>
+        </div>
+      </LoadingOptimizer>
+    </ErrorBoundary>
   );
 }
 

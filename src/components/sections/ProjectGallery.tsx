@@ -119,7 +119,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ id, onVisible }) => {
                 <h3 className="text-2xl font-bold mb-4 text-white-bright">
                   {project.title}
                 </h3>
-                <p className="text-white-glass mb-6 leading-relaxed">{project.description}</p>
+                <p className="text-white-glass mb-6 leading-relaxed text-base">{project.description}</p>
                 
                 <div className="flex flex-wrap gap-3 mb-6">
                   {project.tools.map((tool, idx) => (
@@ -132,12 +132,12 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ id, onVisible }) => {
                   ))}
                 </div>
                 
-                <div className="flex gap-4">
+                <div className="flex flex-col sm:flex-row gap-4">
                   <a 
                     href={project.github} 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-white hover:text-blue-300 transition-colors font-semibold text-lg group/link"
+                    className="inline-flex items-center justify-center sm:justify-start text-white hover:text-blue-300 transition-colors font-semibold text-lg group/link py-2"
                   >
                     <Github className="mr-2 w-5 h-5" />
                     View Code
@@ -149,7 +149,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ id, onVisible }) => {
                       href={project.demo} 
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-white hover:text-green-300 transition-colors font-semibold text-lg group/link"
+                      className="inline-flex items-center justify-center sm:justify-start text-white hover:text-green-300 transition-colors font-semibold text-lg group/link py-2"
                     >
                       <ExternalLink className="mr-2 w-5 h-5" />
                       Live Demo
