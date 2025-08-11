@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Code, Database, BrainCircuit, LineChart, Lightbulb, Globe } from 'lucide-react';
 
