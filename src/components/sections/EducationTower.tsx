@@ -19,9 +19,9 @@ const EducationTower: React.FC<EducationTowerProps> = ({ id, onVisible }) => {
 
   const education = [
     {
-      degree: "B.Tech Hons. CSE in Data Science and Data Engineering",
+      degree: "Bachelor of Technology in Computer Science (Honors) in Data Science and Data Engineering",
       institution: "Lovely Professional University Punjab",
-      period: "2021 - Present",
+      period: "Aug 2021 - Aug 2025",
       description: "Pursuing specialization in Data Science and Data Engineering with focus on machine learning and analytics.",
       achievements: [
         "Academic Excellence",

@@ -2,12 +2,15 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Instagram } from 'lucide-react';
 import { Scene } from '../3d/Scene';
+import AboutMeModal from '../ui/AboutMeModal';
 
 interface HeroProps {
   onSectionChange: (section: string) => void;
 }
 
 const Hero: React.FC<HeroProps> = ({ onSectionChange }) => {
+  const [isAboutModalOpen, setIsAboutModalOpen] = React.useState(false);
+
   const handleExploreClick = () => {
     onSectionChange('experience');
     const experienceSection = document.getElementById('experience');
@@ -110,6 +113,14 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange }) => {
                 >
                   Explore Portfolio
                 </motion.button>
+                <motion.button 
+                  onClick={() => setIsAboutModalOpen(true)}
+                  className="btn btn-outline"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  About Me
+                </motion.button>
                 <motion.a 
                   href="#contact" 
                   className="btn btn-outline"
@@ -155,6 +166,11 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange }) => {
           </button>
         </motion.div>
       </div>
+      
+      <AboutMeModal 
+        isOpen={isAboutModalOpen} 
+        onClose={() => setIsAboutModalOpen(false)} 
+      />
     </section>
   );
 };

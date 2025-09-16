@@ -19,28 +19,60 @@ const CertificationsWall: React.FC<CertificationsWallProps> = ({ id, onVisible }
 
   const certifications = [
     {
-      name: "Excel Skills for Business (Job Simulation)",
-      issuer: "Goldman Sachs",
-      date: "January 2025",
-      description: "Applied Excel skills in real-world business scenarios including data cleaning, analysis, and visualization.",
+      name: "Looker/Looker Studio",
+      issuer: "Google Cloud",
+      date: "2024",
+      description: "Mastered data visualization and business intelligence using Google's Looker platform for creating interactive dashboards and reports.",
       image: "https://images.pexels.com/photos/7413915/pexels-photo-7413915.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      skills: ["Excel", "Data Cleaning", "Data Analysis", "Data Visualization", "Business Analytics"]
+      skills: ["Looker", "Data Visualization", "Business Intelligence", "Dashboard Design", "Google Cloud"]
     },
     {
-      name: "The Bits and Bytes of Computer Networking",
-      issuer: "Google",
-      date: "November 2023",
-      description: "Covered networking fundamentals such as TCP/IP, DNS, HTTP, and cloud computing concepts.",
+      name: "Introduction to Data Analytics",
+      issuer: "Google Cloud",
+      date: "2024",
+      description: "Comprehensive foundation in data analytics concepts, tools, and methodologies using Google Cloud Platform services.",
       image: "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      skills: ["TCP/IP", "DNS", "HTTP", "Cloud Computing", "Network Protocols"]
+      skills: ["Data Analytics", "Google Cloud Platform", "Data Processing", "Analytics Tools", "Cloud Computing"]
+    },
+    {
+      name: "Introduction to Model Context Protocol",
+      issuer: "Anthropic",
+      date: "2024",
+      description: "Advanced understanding of AI model context protocols and their applications in modern AI systems and workflows.",
+      image: "https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      skills: ["AI Models", "Context Protocol", "Machine Learning", "AI Systems", "Model Architecture"]
+    },
+    {
+      name: "Python & Django",
+      issuer: "CipherSchool",
+      date: "2024",
+      description: "Full-stack web development using Python and Django framework, covering backend development and web application architecture.",
+      image: "https://images.pexels.com/photos/7567529/pexels-photo-7567529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      skills: ["Python", "Django", "Web Development", "Backend Development", "Full-Stack"]
+    },
+    {
+      name: "[TechnOcean] Certificate of Participation",
+      issuer: "Lovely Professional University",
+      date: "2024",
+      description: "Active participation in TechnOcean technical event, demonstrating engagement in technology competitions and innovation challenges.",
+      image: "https://images.pexels.com/photos/5256816/pexels-photo-5256816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      skills: ["Technical Competition", "Innovation", "Problem Solving", "Team Collaboration", "Technology"]
     },
     {
       name: "Data Structures",
-      issuer: "University of California, San Diego",
+      issuer: "UC San Diego",
       date: "November 2022",
       description: "Learned core data structures including arrays, linked lists, trees, graphs, and algorithmic techniques.",
       image: "https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       skills: ["Arrays", "Linked Lists", "Trees", "Graphs", "Algorithms", "Data Structures"]
+    },
+    {
+      name: "Datathon",
+      issuer: "Pickl.AI",
+      date: "2024",
+      description: "Participated in competitive data science event, applying machine learning and analytics skills to solve real-world data challenges.",
+      image: "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      skills: ["Data Science", "Machine Learning", "Analytics", "Competition", "Problem Solving"]
     }
   ];
 
@@ -65,7 +97,7 @@ const CertificationsWall: React.FC<CertificationsWallProps> = ({ id, onVisible }
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
               className="glass-panel flex flex-col md:flex-row overflow-hidden"
             >
               <div className="md:w-1/3 h-48 md:h-auto relative overflow-hidden">
